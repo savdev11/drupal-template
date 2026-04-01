@@ -1,0 +1,17 @@
+uuid: d3c8f305-8450-45df-b05d-0d6656f3d704
+langcode: en
+status: false
+dependencies: {  }
+id: prod
+label: Prod
+weight: 3
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/prod
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

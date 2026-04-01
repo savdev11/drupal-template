@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+  colors="true"
+  executionOrder="depends,defects"
+  cacheDirectory=".phpunit.cache">
+  <testsuites>
+    <testsuite name="Site Starter Unit Tests">
+      <directory>web/modules/custom/site_starter/tests/src/Unit</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

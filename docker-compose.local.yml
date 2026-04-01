@@ -1,0 +1,18 @@
+services:
+  app:
+    volumes:
+      - ./:/var/www/html
+      - private-files:/var/www/private
+      - public-files:/var/www/html/web/sites/default/files
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  web:
+    ports:
+      - "${NGINX_PORT:-8081}:80"
+    volumes:
+      - ./:/var/www/html:ro
+      - public-files:/var/www/html/web/sites/default/files
+
+  mailpit:
+    profiles: []

@@ -1,0 +1,5 @@
+services:
+  Drupal\site_starter\Drush\Commands\SiteStarterCommands:
+    class: Drupal\site_starter\Drush\Commands\SiteStarterCommands
+    tags:
+      - { name: drush.command }

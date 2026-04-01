@@ -1,0 +1,18 @@
+uuid: 2aa853b4-43a8-47d1-a546-6f0864c14d03
+langcode: en
+status: false
+dependencies: {  }
+id: stage
+label: Stage
+weight: 2
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/stage
+module:
+  stage_file_proxy: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

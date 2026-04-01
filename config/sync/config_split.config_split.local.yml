@@ -1,0 +1,19 @@
+uuid: 5fd9511c-170d-4b63-91ef-8475179af001
+langcode: en
+status: false
+dependencies: {  }
+id: local
+label: Local
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/local
+module:
+  devel: 0
+  stage_file_proxy: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

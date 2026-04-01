@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: ["main", "develop"]
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: gd, intl, mbstring, pdo_mysql, zip
+          tools: composer:v2
+          coverage: none
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: PHPCS
+        run: ./vendor/bin/phpcs --standard=phpcs.xml
+
+      - name: PHPMD
+        run: ./vendor/bin/phpmd web/modules/custom,web/themes/custom text phpmd.xml
+
+      - name: YAML lint
+        run: find . -type f \( -name '*.yml' -o -name '*.yaml' \) | xargs -r ./vendor/bin/yaml-lint
+
+      - name: Twig lint
+        run: ./vendor/bin/twigcs web/themes/custom web/modules/custom
+
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit -c phpunit.xml.dist

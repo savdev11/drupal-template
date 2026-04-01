@@ -1,0 +1,40 @@
+name: Release and Deploy
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure tag commit is on main
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+
+      - name: Trigger Coolify deployment webhook
+        if: ${{ secrets.COOLIFY_WEBHOOK_URL != '' }}
+        run: |
+          curl -X POST "${{ secrets.COOLIFY_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d '{"tag":"${{ github.ref_name }}","repository":"${{ github.repository }}"}'
+
+      - name: Trigger Dokploy deployment webhook
+        if: ${{ secrets.DOKPLOY_WEBHOOK_URL != '' }}
+        run: |
+          curl -X POST "${{ secrets.DOKPLOY_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d '{"tag":"${{ github.ref_name }}","repository":"${{ github.repository }}"}'

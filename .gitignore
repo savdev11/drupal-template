@@ -1,65 +1,36 @@
-# gitignore template for Drupal 8 projects
-#
-# earlier versions of Drupal are tracked in `community/PHP/`
-#
-# follows official upstream conventions:
-# https://www.drupal.org/docs/develop/using-composer
+# Dependencies
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
 
-# Ignore configuration files that may contain sensitive information
-/web/sites/*/*settings*.php
-/web/sites/*/*services*.yml
+# Drupal generated assets
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/tmp/
+/web/sites/*/translations/
 
-# Ignore paths that may contain user-generated content
-/web/sites/*/files
-/web/sites/*/public
-/web/sites/*/private
-/web/sites/*/files-public
-/web/sites/*/files-private
+# Sensitive files
+/web/sites/*/settings.local.php
+/web/sites/*/services.local.yml
+/.env
+/.env.local
+/.env.*.local
 
-# Ignore paths that may contain temporary files
-/web/sites/*/translations
-/web/sites/*/tmp
-/web/sites/*/cache
+# Build and runtime
+/.phpunit.result.cache
+/.php-cs-fixer.cache
+/node_modules/
 
-# Ignore drupal core (if not versioning drupal sources)
-/web/vendor
-/web/core
-/web/modules/README.txt
-/web/modules/contrib
-/web/profiles/README.txt
-/web/profiles/contrib
-/web/sites/development.services.yml
-/web/sites/example.settings.local.php
-/web/sites/example.sites.php
-/web/sites/README.txt
-/web/themes/README.txt
-/web/themes/contrib
-/web/.csslintrc
-/web/.editorconfig
-/web/.eslintignore
-/web/.eslintrc.json
-/web/.gitattributes
-/web/.htaccess
-/web/.ht.router.php
-/web/autoload.php
-/web/composer.json
-/web/composer.lock
-/web/example.gitignore
-/web/index.php
-/web/INSTALL.txt
-/web/LICENSE.txt
-/web/README.txt
-/web/robots.txt
-/web/update.php
-/web/web.config
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
 
-# Ignore vendor dependencies and scripts
-/vendor
-/composer.phar
-/composer
-/robo.phar
-/robo
-/drush.phar
-/drush
-/drupal.phar
-/drupal
+# Logs and dumps
+*.log
+*.sql
+*.sql.gz
+*.dump

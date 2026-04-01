@@ -1,0 +1,114 @@
+{
+  "name": "saveriocustodi/drupal-platform-template",
+  "description": "Production-grade Drupal starter template for client websites.",
+  "type": "project",
+  "license": "proprietary",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "composer/installers": "^2.3",
+    "drupal/bootstrap": "^5.0",
+    "drupal/config_split": "^2.0",
+    "drupal/core-composer-scaffold": "^11.0",
+    "drupal/core-project-message": "^11.0",
+    "drupal/core-recommended": "^11.0",
+    "drupal/core-vendor-hardening": "^11.0",
+    "drupal/redis": "^1.8",
+    "drupal/smtp": "^2.1",
+    "drupal/stage_file_proxy": "^2.0",
+    "drush/drush": "^13.0"
+  },
+  "require-dev": {
+    "drupal/coder": "^8.3",
+    "mglaman/phpstan-drupal": "^1.3",
+    "phpmd/phpmd": "^2.15",
+    "phpunit/phpunit": "^10.5",
+    "squizlabs/php_codesniffer": "^3.10",
+    "symfony/yaml": "^7.0",
+    "wendelladriel/twigcs": "^6.4",
+    "wotzebra/yaml-lint": "^0.4.0"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "drupal/core-composer-scaffold": true,
+      "drupal/core-project-message": true,
+      "phpstan/extension-installer": true
+    },
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Drupal\\site_starter\\": "web/modules/custom/site_starter/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Drupal\\Tests\\site_starter\\": "web/modules/custom/site_starter/tests/src/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@composer drupal:scaffold"
+    ],
+    "post-update-cmd": [
+      "@composer drupal:scaffold"
+    ],
+    "drupal:scaffold": "Drupal\\Composer\\Plugin\\Scaffold\\Plugin::scaffold",
+    "qa": [
+      "@phpcs",
+      "@phpmd",
+      "@phpunit"
+    ],
+    "phpcs": "phpcs --standard=phpcs.xml",
+    "phpmd": "phpmd web/modules/custom,web/themes/custom text phpmd.xml",
+    "phpunit": "phpunit -c phpunit.xml.dist"
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "web/"
+      }
+    },
+    "installer-paths": {
+      "web/core": [
+        "type:drupal-core"
+      ],
+      "web/libraries/{$name}": [
+        "type:drupal-library"
+      ],
+      "web/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "web/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "web/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/Commands/contrib/{$name}": [
+        "type:drupal-drush"
+      ]
+    },
+    "drupal-core-project-message": {
+      "include-keys": [
+        "homepage",
+        "support"
+      ],
+      "post-create-project-cmd-message": [
+        "<info>Drupal platform template ready.</info>",
+        "<info>Run: make init</info>"
+      ]
+    }
+  }
+}

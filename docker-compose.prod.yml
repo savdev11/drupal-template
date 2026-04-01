@@ -1,0 +1,8 @@
+services:
+  app:
+    environment:
+      APP_ENV: prod
+      XDEBUG_MODE: off
+
+  mailpit:
+    profiles: ["devtools"]

@@ -1,0 +1,5 @@
+name: Site Starter
+type: module
+description: Baseline custom module for project-specific extensions.
+package: Custom
+core_version_requirement: ^11

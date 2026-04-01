@@ -1,0 +1,18 @@
+:root {
+  --client-primary: #0e5a8a;
+  --client-secondary: #f4f7fb;
+  --client-accent: #d88a1d;
+}
+
+body {
+  background: linear-gradient(180deg, #ffffff 0%, var(--client-secondary) 100%);
+}
+
+a {
+  color: var(--client-primary);
+}
+
+a:hover,
+a:focus {
+  color: var(--client-accent);
+}
