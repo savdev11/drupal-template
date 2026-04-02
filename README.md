@@ -20,7 +20,7 @@ Freelance/solo Drupal engineers who want:
 - Varnish
 - MariaDB 11.4
 - Redis 7
-- Mailpit (local/dev)
+- Mailpit (local)
 - Xdebug (toggleable)
 - Drush + Composer
 - Docker Compose (no DDEV/Lando)
@@ -67,7 +67,7 @@ make qa
 
 ## Environment overview
 
-- `APP_ENV=local|dev|stage|prod`
+- `APP_ENV=local|stage|prod`
 - `settings.php` loads environment-specific settings includes
 - Config Split toggled per environment
 - secrets/runtime endpoints loaded from env vars

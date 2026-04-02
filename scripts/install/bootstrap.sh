@@ -34,6 +34,10 @@ $DC exec -T app ./vendor/bin/drush site:install standard \
 $DC exec -T app ./vendor/bin/drush en -y bootstrap config_split redis smtp stage_file_proxy site_starter
 $DC exec -T app ./vendor/bin/drush theme:enable client_bootstrap -y
 $DC exec -T app ./vendor/bin/drush config:set system.theme default client_bootstrap -y
+
+# Bootstrap theme schema expects bootstrap_icons as string, not integer.
+$DC exec -T app ./vendor/bin/drush config:set bootstrap.settings bootstrap_icons '1' --input-format=string -y || true
+
 $DC exec -T app ./vendor/bin/drush cache:rebuild
 
 echo "Drupal bootstrap completed."

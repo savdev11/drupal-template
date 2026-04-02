@@ -3,6 +3,8 @@ SHELL := /bin/bash
 DC := docker compose --env-file .env -f docker-compose.yml -f docker-compose.local.yml
 APP := app
 
+.PHONY: help init up down restart logs ps shell composer composer-install drush bootstrap db-import db-sanitize files-pull post-import xdebug-on xdebug-off cs phpmd lint-yaml lint-twig test lint qa clean
+
 .DEFAULT_GOAL := help
 
 help:

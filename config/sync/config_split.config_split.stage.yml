@@ -4,7 +4,7 @@ status: false
 dependencies: {  }
 id: stage
 label: Stage
-weight: 2
+weight: 1
 stackable: false
 no_patching: false
 storage: folder

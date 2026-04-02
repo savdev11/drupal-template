@@ -2,14 +2,6 @@ local:
   root: /var/www/html/web
   uri: http://localhost:8080
 
-dev:
-  host: ${env.REMOTE_SSH_HOST}
-  user: ${env.REMOTE_SSH_USER}
-  root: ${env.REMOTE_PROJECT_PATH}/web
-  uri: https://dev.example.com
-  paths:
-    drush-script: ${env.REMOTE_PROJECT_PATH}/vendor/bin/drush
-
 stage:
   host: ${env.REMOTE_SSH_HOST}
   user: ${env.REMOTE_SSH_USER}

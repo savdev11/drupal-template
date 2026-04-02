@@ -5,7 +5,6 @@
 - Canonical config lives in `config/sync`.
 - Environment-only config deltas use Config Split:
   - `config/splits/local`
-  - `config/splits/dev`
   - `config/splits/stage`
   - `config/splits/prod`
 

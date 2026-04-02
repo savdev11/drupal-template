@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 $config['config_split.config_split.local']['status'] = FALSE;
-$config['config_split.config_split.dev']['status'] = FALSE;
 $config['config_split.config_split.stage']['status'] = TRUE;
 $config['config_split.config_split.prod']['status'] = FALSE;
 
